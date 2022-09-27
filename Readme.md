@@ -4,7 +4,7 @@ Small utility to add line numbers to `strace -k` output.
 
 `strace -k` prints a stack trace for each syscall.
 
-It can parse binary symbols (if your binary is compiled with `-ggdb`) and show function names + offset inside the function.
+It can parse binary symbols (if your binary is compiled with ex. `-ggdb`) and show function names + offset inside the function.
 
 The trace is in the following format:
 ```
@@ -30,7 +30,7 @@ brk(0x55e6a1477000)                     = 0x55e6a1477000
 
 Unfortunately, `strace` does not support translating addresses to line numbers.
 
-This can be done manually using addr2line:
+This can be done manually using `addr2line`:
 ```
 $ addr2line -e hello 0x116e
 /home/user/lt/hello.c:5
