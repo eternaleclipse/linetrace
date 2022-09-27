@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+import subprocess
+
+if len(sys.argv) < 2:
+    print('Usage: strace -k ... | linetrace <filter>')
+    sys.exit(1)
+
+bin_filter = re.compile(sys.argv[1])
+
+for line in sys.stdin:
+    print(line, end='')
+    m = re.search('> (.*?)\(.*?\) \[(.*?)\]', line)
+    if not m:
+        continue
+
+    bin_path = m.group(1)
+    addr = m.group(2)
+
+    if re.search(bin_filter, bin_path):
+       print(subprocess.check_output(['addr2line', '-e', bin_path, addr]).decode('utf8'), end='')
