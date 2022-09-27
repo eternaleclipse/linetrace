@@ -1,4 +1,4 @@
-Small utility to add line numbers to `strace -k` output.
+Simple utility to add line numbers to `strace -k` output.
 
 # Why?
 
