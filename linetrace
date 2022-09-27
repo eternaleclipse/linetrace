@@ -9,10 +9,11 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 bin_filter = re.compile(sys.argv[1])
+search_pattern = re.compile(r'> (.*?)\(.*?\) \[(.*?)\]')
 
 for line in sys.stdin:
     print(line, end='')
-    m = re.search('> (.*?)\(.*?\) \[(.*?)\]', line)
+    m = search_pattern.search(line)
     if not m:
         continue
 
