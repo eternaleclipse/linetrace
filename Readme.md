@@ -28,7 +28,7 @@ brk(0x55e6a1477000)                     = 0x55e6a1477000
  > /home/user/lt/hello(_start+0x2e) [0x108e]
 ```
 
-Unfortunately, `strace` does not support translating addresses to line numbers.
+Unfortunately, if you have access to source code, `strace` does not support translating addresses to line numbers.
 
 This can be done manually using `addr2line`:
 ```
